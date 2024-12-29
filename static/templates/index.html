@@ -1,23 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pay Later Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Pay Later Service Dashboard</title>
+    <style>
+        .nav-buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <div id="dashboard">
-        <h1>Pay Later Service Dashboard</h1>
-        <div class="nav-buttons">
-            <button onclick="showPage('reports')">Reports</button>
-            <button onclick="showPage('merchants')">Merchants</button>
-            <button onclick="showPage('users')">Users</button>
-        </div>
-        <div id="content">
-            <!-- Dynamic Content Will Be Loaded Here -->
-        </div>
+    <h1>Pay Later Service Dashboard</h1>
+
+    <div class="nav-buttons">
+        <button onclick="openPage('reports')">Reports</button>
+        <button onclick="openPage('merchants')">Merchants</button>
+        <button onclick="openPage('users')">Users</button>
     </div>
-    <script src="scripts.js"></script>
+
+    <script>
+        function openPage(page) {
+            let url = '';
+            // Generate content dynamically based on the button clicked
+            if (page === 'reports') {
+                url = 'data:text/html,' + encodeURIComponent('<h1>Reports</h1><p>Here is the Reports data...</p>');
+            } else if (page === 'merchants') {
+                url = 'data:text/html,' + encodeURIComponent('<h1>Merchants</h1><p>Here is the Merchants data...</p>');
+            } else if (page === 'users') {
+                url = 'data:text/html,' + encodeURIComponent('<h1>Users</h1><p>Here is the Users data...</p>');
+            }
+
+            // Open the URL in a new tab
+            if (url) {
+                window.open(url, '_blank');
+            }
+        }
+    </script>
 </body>
 </html>
